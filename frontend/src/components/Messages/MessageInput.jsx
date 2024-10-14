@@ -4,14 +4,15 @@ import useSendMessage from "../../hooks/useSendMessage";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
-  const { loading, sendMessage } = useState();
-  
+  const { loading, sendMessage } = useSendMessage();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message) return;
     await sendMessage(message);
     setMessage("");
   };
+
   return (
     <form className="px-4 my-3" onSubmit={handleSubmit}>
       <div className="w-full relative">

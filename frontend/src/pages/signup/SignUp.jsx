@@ -1,5 +1,5 @@
-import GenderCheckbox from "./GenderCheckbox";
 import { Link } from "react-router-dom";
+import GenderCheckbox from "./GenderCheckbox";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
 
@@ -22,6 +22,7 @@ const SignUp = () => {
     e.preventDefault();
     await signup(inputs);
   };
+
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
@@ -32,7 +33,7 @@ const SignUp = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">FullName</span>
+              <span className="text-base label-text">Full Name</span>
             </label>
             <input
               type="text"
@@ -55,7 +56,7 @@ const SignUp = () => {
               className="w-full input input-bordered h-10"
               value={inputs.username}
               onChange={(e) =>
-                setInputs({ ...inputs, fullName: e.target.value })
+                setInputs({ ...inputs, username: e.target.value })
               }
             />
           </div>
@@ -70,7 +71,7 @@ const SignUp = () => {
               className="w-full input input-bordered h-10"
               value={inputs.password}
               onChange={(e) =>
-                setInputs({ ...inputs, fullName: e.target.value })
+                setInputs({ ...inputs, password: e.target.value })
               }
             />
           </div>
@@ -108,7 +109,11 @@ const SignUp = () => {
               className="btn btn-block btn-sm mt-2 border border-slate-700"
               disabled={loading}
             >
-              {loading ? <span className="loading-spinner"></span> : "Sign Up"}
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
         </form>
