@@ -4,7 +4,7 @@ import { useAuthContext } from "../context/AuthContext";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
-  const{ setAuthUser} =useAuthContext()
+  const { setAuthUser } = useAuthContext();
 
   const signup = async ({
     fullName,
@@ -24,7 +24,7 @@ const useSignup = () => {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/sighnup", {
+      const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -37,13 +37,13 @@ const useSignup = () => {
       });
 
       const data = await res.json();
-      if(data.error){
-        throw new Error(data.error)
+      if (data.error) {
+        throw new Error(data.error);
       }
       //localstorage
-      localStorage.setItem('chat-user', JSON.stringify(data))
+      localStorage.setItem("chat-user", JSON.stringify(data));
       //context
-      setAuthUser(data)
+      setAuthUser(data);
       console.log(data);
     } catch (error) {
       toast.error(error.message);
