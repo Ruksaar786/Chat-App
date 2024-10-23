@@ -1,3 +1,4 @@
+MERNSTACK CHAT APP
 Some Features:
 
 🌟 Tech stack: MERN + Socket.io + TailwindCSS + Daisy UI
